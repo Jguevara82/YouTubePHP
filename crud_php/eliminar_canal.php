@@ -4,15 +4,17 @@
     session_start();
     if(isset($_SESSION['mail'])){
         $query = "DELETE FROM canal WHERE correo = '".$_SESSION['mail']."';";
-        $result = mysqli_query($connection, $query);
-        if(!$result) {
-            die("Failed to DELETE");
+        $result["success"] = mysqli_query($connection, $query);
+        if(!$result["success"]) {
+            $result["message"] = "NO se borro";
         }else{
-            echo "Se ha eliminado el canal";
+            $result["message"] = "Se ha eliminado el canal";
             session_destroy();
         }
     }else{
-        echo "Inicie sesión para darse de baja";
+        $result["success"] = false;
+        $result["message"] = "Inicie sesion para darse de baja";
     }
+    echo json_encode($result);
 
 ?>

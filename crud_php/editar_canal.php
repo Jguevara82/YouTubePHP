@@ -3,25 +3,25 @@
     session_start();
     if(isset($_SESSION['mail'])){
         echo "Sesión activa: ".$_SESSION['mail'];
-        $max=count($_GET);
+        $max=count($_PUT);
         $aux=0;
         $cambios="";
-        if(isset($_GET['username'])){
-            $cambios.= "usuario = '".$_GET['username']. "' ";
+        if(isset($_PUT['username'])){
+            $cambios.= "usuario = '".$_PUT['username']. "' ";
             if($aux<$max-1){
                 $cambios.= ", ";
                 $aux++;
             }
         }
-        if(isset($_GET['password'])){
-            $cambios.= "contra = '".$_GET['password'] . "' ";
+        if(isset($_PUT['password'])){
+            $cambios.= "contra = '".$_PUT['password'] . "' ";
             if($aux<$max-1){
                 $cambios.= ", ";
                 $aux++;
             }
         }
-        if(isset($_GET['description'])){
-            $cambios.= "descripcion = '".$_GET['description']. "' ";
+        if(isset($_PUT['description'])){
+            $cambios.= "descripcion = '".$_PUT['description']. "' ";
             if($aux<$max-1){
                 $cambios.= ", ";
                 $aux++;
@@ -29,15 +29,16 @@
         }
         $query = "UPDATE canal SET $cambios WHERE correo = '".$_SESSION['mail'] ."'";
         //echo $query;
-        $result = mysqli_query($connection, $query);
+        $result["success"] = mysqli_query($connection, $query);
         //echo "\n$result";
-        if(!$result){
-            die("Failed to UPDATE");
+        if(!$result["success"]){
+            $result["message"] = "Failed to UPDATE";
         }else{
-            echo "Se ha editado el canal";
+            $result["message"] = "Se ha editado el canal";
         }
     }else{
-        die("Inicie sesión antes de editar, por favor");
+        $result["success"] = false;
+        $result["message"] = "Inicie sesion antes de editar, por favor";
     }
-
+    echo json_encode($result);
 ?>

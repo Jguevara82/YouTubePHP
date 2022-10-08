@@ -1,18 +1,19 @@
 <?php
     include ("db.php");
     
-    $email = $_GET['email'];
-    $password = $_GET['password'];
-    $username = $_GET['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $username = $_POST['username'];
     $description = "Sin descripción";
-    if(isset($_GET['description'])){
-        $description = $_GET['description'];
+    if(isset($_POST['description'])&&!empty($_POST['description'])){
+        $description = $_POST['description'];
     }
     $query = "INSERT INTO canal(correo, usuario, contra, descripcion) VALUES ('$email', '$username', '$password', '$description');";
-    $result = mysqli_query($connection, $query);
-    if(!$result){
-        die("Failed to insert INTO");
+    $result["success"] = mysqli_query($connection, $query);
+    if(!$result["success"]){
+        $result["message"] = "Canal NO registrado";
     }else{
-        echo "Se ha creado el canal $username asociado al correo $email";
+        $result["message"] = "Canal registrado satisfactoriamente";
     }
+    echo json_encode($result);
 ?>
