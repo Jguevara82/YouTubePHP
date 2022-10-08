@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-09-2022 a las 03:20:08
+-- Tiempo de generación: 08-10-2022 a las 19:52:51
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -41,25 +41,10 @@ CREATE TABLE `canal` (
 --
 
 INSERT INTO `canal` (`correo`, `usuario`, `contra`, `subs`, `fecha`, `descripcion`) VALUES
+('123@456', 'usuario', 'contra', 0, '2022-10-08 17:28:17', 'Sin descripción'),
 ('correo2@hotmail.com', 'PabloBlogs', '12345678', 0, '2022-09-26 04:08:38', 'Este es un canal de blogs'),
-('ejemplo2@mail.com', 'Usuario1', 'hola123', 0, '2022-09-25 03:41:47', 'Sin descripción'),
+('ejemplo2@mail.com', 'Usuario1', 'pass123', 0, '2022-09-25 03:41:47', 'Sin descripción'),
 ('juanjose.guevararozo@gmail.com', 'Juan Guevara', '12345', 0, '2022-09-25 01:01:45', 'Sin descripción');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `drive_files`
---
-
-CREATE TABLE `drive_files` (
-  `id` int(11) NOT NULL,
-  `canal_correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `file_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `google_drive_file_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `visibility` enum('public','private','hidden') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'public',
-  `description` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Índices para tablas volcadas
@@ -70,33 +55,6 @@ CREATE TABLE `drive_files` (
 --
 ALTER TABLE `canal`
   ADD PRIMARY KEY (`correo`);
-
---
--- Indices de la tabla `drive_files`
---
-ALTER TABLE `drive_files`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `canal_correo` (`canal_correo`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `drive_files`
---
-ALTER TABLE `drive_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `drive_files`
---
-ALTER TABLE `drive_files`
-  ADD CONSTRAINT `drive_files_ibfk_1` FOREIGN KEY (`canal_correo`) REFERENCES `canal` (`correo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
