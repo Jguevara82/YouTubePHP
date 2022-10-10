@@ -2,7 +2,8 @@
     include ("db.php");
     session_start();
     if(isset($_SESSION['mail'])){
-        echo "Sesión activa: ".$_SESSION['mail'];
+        $_PUT = json_decode(file_get_contents("php://input"),true);
+        //echo "Sesión activa: ".$_SESSION['mail'];
         $max=count($_PUT);
         $aux=0;
         $cambios="";
