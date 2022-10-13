@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2022 a las 19:52:51
+-- Tiempo de generación: 13-10-2022 a las 23:24:51
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -41,7 +41,7 @@ CREATE TABLE `canal` (
 --
 
 INSERT INTO `canal` (`correo`, `usuario`, `contra`, `subs`, `fecha`, `descripcion`) VALUES
-('123@456', 'usuario', 'contra', 0, '2022-10-08 17:28:17', 'Sin descripción'),
+('123@456', 'usuario', 'contra', 0, '2022-10-12 17:50:41', 'Sin descripción'),
 ('correo2@hotmail.com', 'PabloBlogs', '12345678', 0, '2022-09-26 04:08:38', 'Este es un canal de blogs'),
 ('ejemplo2@mail.com', 'Usuario1', 'pass123', 0, '2022-09-25 03:41:47', 'Sin descripción'),
 ('juanjose.guevararozo@gmail.com', 'Juan Guevara', '12345', 0, '2022-09-25 01:01:45', 'Sin descripción');

@@ -9,7 +9,7 @@
         $password = $_GET['password'];
         $query = "SELECT * FROM canal WHERE correo='$email'";
         $result["channel"] = mysqli_query($connection, $query);
-        if(!($dato1 = mysqli_fetch_array($result["channel"]))){
+        if(!($dato1 = mysqli_fetch_assoc($result["channel"]))){
             $result["success"] = false;
             $result["message"] = "No hay canal asociado a ese correo, registrese";
         }else{
