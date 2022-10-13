@@ -9,11 +9,15 @@
             $result["success"] = false;
             $result["message"] = "Video no encontrado";
         }else{
+            $video = "C:/Users/Public/Documents/Videos/" . $dato["archivo"];
             $query = "DELETE FROM video WHERE id = '".$_GET['id']."';";
             if(!mysqli_query($connection, $query)) {
                 $result["success"] = false;
                 $result["message"] = "NO se borro";
             }else{
+                if(file_exists($video)){
+                    unlink($video);
+                }
                 $result["success"] = true;
                 $result["message"] = "Se ha eliminado el video";
             }
