@@ -26,5 +26,6 @@
         }
         unset($result["channel"]);
     }
-    echo json_encode($result);
+    return json_encode($result);
+    exit();
 ?>

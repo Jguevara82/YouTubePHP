@@ -28,6 +28,13 @@
                 $aux++;
             }
         }
+        if(isset($_PUT['visibilidad'])){
+            $cambios.= "visibilidad = '".$_PUT['visibilidad']. "' ";
+            if($aux<$max-1){
+                $cambios.= ", ";
+                $aux++;
+            }
+        }
         $query = "UPDATE video SET $cambios WHERE id = '".$_GET['id'] ."'";
         //echo $query;
         $result["success"] = mysqli_query($connection, $query);

@@ -19,8 +19,22 @@
                 $titulo = time();
                 $id = uniqid("", true);
                 $nombre =  $id . '.' . $extension;
-                if(move_uploaded_file($tmp, "C:/Users/Public/Documents/Videos/" . $nombre)){
-                    //echo "Uploaded in C:/Users/Public/Documents/Videos/" . $nombre;
+                include("drive_con.php");
+                try{
+                    $file = new Google_Service_Drive_DriveFile();
+                    $file->setName("$id" . ".$extension");
+                    $file->setParents(array("1d8Fsc_7fMMUmvCIHTSncfLrfVNksnC6j"));
+                    $file->setDescription("Subido por: ". $_SESSION['mail']);
+                    $file->setMimeType("video/$extension");
+                
+                    $resultado = $service->files->create(
+                        $file,
+                        array(
+                            'data' => file_get_contents($tmp),
+                            'mimeType' => "video/$extension",
+                            'uploadType' => 'media'
+                        )
+                    );
                     if(isset($_POST['titulo'])){
                         $titulo = $_POST['titulo'];
                     }
@@ -34,8 +48,13 @@
                     }else{
                         $result["message"] = "Video subido satisfactoriamente";
                     }
-                }else{
-                    echo "No se subió el archivo";
+                }catch(Google_Service_Exception $gs){
+                    $message = json_decode($gs->getMessage());
+                    $result["message"] = $message->error->message();
+                    $result["success"] = false;
+                }catch(Exception $e){
+                    $result["message"] = $e->getMessage();
+                    $result["success"] = false;
                 }
             }else{
                 echo "ERROR";

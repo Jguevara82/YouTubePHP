@@ -1,6 +1,6 @@
 <?php
 $connection = mysqli_connect(
-    'localhost',
+    '127.0.0.1',
     'root',
     '',
     'youtube2'
@@ -10,6 +10,6 @@ $connection = mysqli_connect(
     echo "Connection established";
 }else{
     echo "Connection failed";
-}*/
-
+}
+*/
 ?>
