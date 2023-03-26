@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: application/json');
     include ("../crud_php/db.php");
     session_start();
     if(isset($_SESSION['mail'])){

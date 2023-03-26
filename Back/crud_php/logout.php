@@ -1,7 +1,7 @@
 <?php
-
+    header('Content-Type: application/json');
     session_start();
-    if(isset($_SESSION['mail'])){
+    if(isset($_GET['session'])){
         $result["success"] = true;
         $result["message"] = "Sesion cerrada";
         session_destroy();

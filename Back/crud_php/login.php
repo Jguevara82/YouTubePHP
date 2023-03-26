@@ -1,7 +1,8 @@
 <?php
+    header('Content-Type: application/json');
     include ("db.php");
     session_start();
-    if(isset($_SESSION['mail'])){
+    if(isset($_GET['session'])){
         $result["success"]=false;
         $result["message"] = "Ya hay una sesion abierta";
     }else{
@@ -14,7 +15,8 @@
             $result["message"] = "No hay canal asociado a ese correo, registrese";
         }else{
             if($dato1['contra']== $password){
-                
+                $result["mail"]=$dato1['correo'];
+                $result["user"]=$dato1['usuario'];
                 $result["success"] = true;
                 $_SESSION['mail'] = $dato1['correo'];
                 $_SESSION['username'] = $dato1['usuario'];
@@ -26,6 +28,5 @@
         }
         unset($result["channel"]);
     }
-    return json_encode($result);
-    exit();
+    echo json_encode($result);
 ?>

@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: application/json');
     include ("db.php");
     
     $email = $_POST['email'];

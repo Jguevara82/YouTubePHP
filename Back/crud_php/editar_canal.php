@@ -1,10 +1,10 @@
 <?php
+    header('Content-Type: application/json');
     include ("db.php");
     session_start();
-    if(isset($_SESSION['mail'])){
-        $_PUT = json_decode(file_get_contents("php://input"),true);
-        //echo "Sesión activa: ".$_SESSION['mail'];
-        $max=count($_PUT);
+    $_PUT = json_decode(file_get_contents("php://input"),true);
+    if(isset($_PUT['session'])){
+        $max=count($_PUT)-1;
         $aux=0;
         $cambios="";
         if(isset($_PUT['username'])){
@@ -28,7 +28,7 @@
                 $aux++;
             }
         }
-        $query = "UPDATE canal SET $cambios WHERE correo = '".$_SESSION['mail'] ."'";
+        $query = "UPDATE canal SET $cambios WHERE correo = '". $_PUT['session'] ."'";
         //echo $query;
         $result["success"] = mysqli_query($connection, $query);
         //echo "\n$result";

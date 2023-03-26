@@ -11,8 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<body class="bg-dark">
+<nav class="navbar navbar-expand-lg bg-dark bg-gradient navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">YouTube2</a>
     <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,14 +27,21 @@
         <ul class="navbar-nav ms-auto">
             <?php
             if(isset($_SESSION['mail'])){
-                ?><li class="nav-item pt-1">
-                <a class="align-self-center lead text-light me-2 align-middle fs-6 fw-bold text-muted text-decoration-none"  href="login.php"><?php echo($_SESSION['mail'])?></a>
+                ?>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-dark-10 dropdown-toggle fw-bold me-2 text-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?php echo($_SESSION['mail'])?>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="canal.php">Mi Canal</a></li>
+                            <li><a class="dropdown-item" href="../Back/crud_php/index.php?mail=<?php echo($_SESSION['mail'])?>">Editar Perfil</a></li>
+                            <li><a class="dropdown-item" href="../Back/crud_php/index.php?">Salir</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-secondary me-2" aria-current="page" href="../Back/crud_php/logout.php">Salir</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Crear</a>
+                    <a class="nav-link" href="subir_video.php">Crear</a>
                 </li>
                 <?php
             }else{
