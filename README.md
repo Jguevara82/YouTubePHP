@@ -1,2 +1,2 @@
 # YouTubePHP
-A PHP implementation, tryinng to make an YouTube-like application
+A PHP implementation, tryinng to make a YouTube-like application
