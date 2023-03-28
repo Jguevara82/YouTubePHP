@@ -1,9 +1,9 @@
 <?php
     header('Content-Type: application/json');
     include ("../crud_php/db.php");
-    session_start();
-    if(isset($_SESSION['mail'])){
-        $query = "SELECT * FROM video WHERE id = '".$_GET['id']."';";
+    $_DELETE = json_decode(file_get_contents("php://input"),true);
+    if(isset($_DELETE['mail'])){
+        $query = "SELECT * FROM video WHERE id = '".$_DELETE['id']."';";
         $data = mysqli_query($connection, $query);  
         if(!($dato = mysqli_fetch_assoc($data))){
             $result["success"] = false;
@@ -15,7 +15,7 @@
                 //'fields' => 'files(id)'
             ]);
             $service->files->delete([$video[0]['id']]);
-            $query = "DELETE FROM video WHERE id = '".$_GET['id']."';";
+            $query = "DELETE FROM video WHERE id = '".$_DELETE['id']."';";
             if(!mysqli_query($connection, $query)) {
                 $result["success"] = false;
                 $result["message"] = "NO se borro";

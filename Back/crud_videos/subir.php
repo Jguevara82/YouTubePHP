@@ -1,8 +1,7 @@
 <?php
     header('Content-Type: application/json');
     include ("../crud_php/db.php");
-    session_start();
-    if(isset($_SESSION['mail'])){
+    if(isset($_POST['mail'])){
         $archivo = $_FILES['file'];
         $nombre = $archivo['name'];
         $tmp = $archivo['tmp_name'];
@@ -16,7 +15,7 @@
         if($extension=='mp4'){
             if($error==0){
                 $categoria = 'Gente y blogs';
-                $canal = $_SESSION['mail'];
+                $canal = $_POST['mail'];
                 $titulo = time();
                 $id = uniqid("", true);
                 $nombre =  $id . '.' . $extension;
@@ -25,7 +24,7 @@
                     $file = new Google_Service_Drive_DriveFile();
                     $file->setName("$id" . ".$extension");
                     $file->setParents(array("1d8Fsc_7fMMUmvCIHTSncfLrfVNksnC6j"));
-                    $file->setDescription("Subido por: ". $_SESSION['mail']);
+                    $file->setDescription("Subido por: ". $_POST['mail']);
                     $file->setMimeType("video/$extension");
                 
                     $resultado = $service->files->create(
