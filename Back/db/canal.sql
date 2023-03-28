@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2022 a las 23:24:51
+-- Tiempo de generación: 28-03-2023 a las 21:36:59
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -41,10 +41,14 @@ CREATE TABLE `canal` (
 --
 
 INSERT INTO `canal` (`correo`, `usuario`, `contra`, `subs`, `fecha`, `descripcion`) VALUES
-('123@456', 'usuario', 'contra', 0, '2022-10-12 17:50:41', 'Sin descripción'),
-('correo2@hotmail.com', 'PabloBlogs', '12345678', 0, '2022-09-26 04:08:38', 'Este es un canal de blogs'),
-('ejemplo2@mail.com', 'Usuario1', 'pass123', 0, '2022-09-25 03:41:47', 'Sin descripción'),
-('juanjose.guevararozo@gmail.com', 'Juan Guevara', '12345', 0, '2022-09-25 01:01:45', 'Sin descripción');
+('123@456', 'Pablo4', 'blabla', 0, '2022-11-25 02:32:25', 'Mi descripción'),
+('456@789', 'hola@mundo4', 'contra', 0, '2022-11-25 00:00:42', 'Sin descripción'),
+('asdasd@sadasd', 'hola@mundo4', 'contra', 0, '2022-11-01 21:26:36', 'Sin descripción'),
+('ejemplo2@mail.com', 'Usuario1', 'pass123', 1, '2022-09-25 03:41:47', 'Sin descripción'),
+('hola@mundo', 'Mi canal', 'contra', 0, '2022-10-26 01:13:54', 'Mi descripción'),
+('hola@mundo2', 'hola', '1234567', 0, '2022-10-26 01:54:37', 'descripcion'),
+('hola@mundo3', '123@456', 'contra', 0, '2022-11-01 02:42:59', 'Sin descripción'),
+('juanjose.guevararozo@gmail.com', 'Juan Guevara', '12345', 1, '2022-09-25 01:01:45', 'Mi descripción');
 
 --
 -- Índices para tablas volcadas
